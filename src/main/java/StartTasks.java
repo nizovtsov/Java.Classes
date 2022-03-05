@@ -122,13 +122,13 @@ public class StartTasks {
         houseList.addHouse(house19);
         houseList.addHouse(house20);
 
-        houseList.printApartmentList(); //список всех квартир
+        //houseList.printApartmentList(); //список всех квартир
         houseList.printApartmentListWithGivenNumberOfRooms(3); //список квартир, имеющих заданное число комнат
         houseList.printAptListWithGivenRoomsOnFloorInterval(3 , 2, 4); //список квартир, имеющих заданное число комнат и расположенных на этаже, который находится в заданном промежутке
         houseList.printApartmentListWithExceedingArea(70); //список квартир, имеющих площадь, превосходящую заданную
     }
 
     public static void taskCar(){
-
+        Car car1 = new Car("","",2000,"", 10000,"");
     }
 }
