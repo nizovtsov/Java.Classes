@@ -1,9 +1,49 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class StartTasks {
     public static void main(String[] args) {
-        taskStudent();
-        taskBook();
-        taskHouse();
-        taskCar();
+        System.out.println("1 - Class Student \n2 - Class Book \n3 - Class House \n4 - Class Car \n5 - All Classes");
+        System.out.println("Введите число от 1 до 5 и нажмите <Enter>: ");
+        Scanner scan = new Scanner(System.in);
+        try {
+            int i = scan.nextInt();
+            switchClasses(i);
+        } catch (InputMismatchException e) {
+            System.out.println("Такой опции нет.");
+        }
+        scan.close();
+    }
+
+    private static void switchClasses(int i) {
+        switch (i) {
+            case 1:
+                System.out.println("Class Student");
+                taskStudent();
+                break;
+            case 2:
+                System.out.println("Class Book");
+                taskBook();
+                break;
+            case 3:
+                System.out.println("Class House");
+                taskHouse();
+                break;
+            case 4:
+                System.out.println("Class Car");
+                taskCar();
+                break;
+            case 5:
+                System.out.println("All Classes");
+                taskStudent();
+                taskBook();
+                taskHouse();
+                taskCar();
+                break;
+            default:
+                System.out.println("Доступные опции от 1 до 5.");
+
+        }
     }
 
     public static void taskStudent() {
@@ -78,7 +118,7 @@ public class StartTasks {
         booksList.printBooksReleasedAfterYear(1960);//книги после определенного года
     }
 
-    public static void taskHouse(){
+    public static void taskHouse() {
         House house1 = new House(1, 70, 1, 3, "ул. Крупской, 10", "Блочный", "40 лет");
         House house2 = new House(2, 80, 1, 3, "ул. Крупской, 10", "Блочный", "40 лет");
         House house3 = new House(3, 36, 1, 1, "ул. Крупской, 10", "Блочный", "40 лет");
@@ -124,11 +164,39 @@ public class StartTasks {
 
         //houseList.printApartmentList(); //список всех квартир
         houseList.printApartmentListWithGivenNumberOfRooms(3); //список квартир, имеющих заданное число комнат
-        houseList.printAptListWithGivenRoomsOnFloorInterval(3 , 2, 4); //список квартир, имеющих заданное число комнат и расположенных на этаже, который находится в заданном промежутке
+        houseList.printAptListWithGivenRoomsOnFloorInterval(3, 2, 4); //список квартир, имеющих заданное число комнат и расположенных на этаже, который находится в заданном промежутке
         houseList.printApartmentListWithExceedingArea(70); //список квартир, имеющих площадь, превосходящую заданную
     }
 
-    public static void taskCar(){
-        Car car1 = new Car("","",2000,"", 10000,"");
+    public static void taskCar() {
+        Car car1 = new Car("Hummer", "H1 2 Door Hardtop", 1992, "Grey", 10000, "1234AK-6");
+        Car car2 = new Car("Jeep", "Wagoneer", 1960, "White", 200000, "9999XX-6");
+        Car car3 = new Car("Lincoln", "Town Car", 2007, "Black", 12000, "3388AK-6");
+        Car car4 = new Car("Hummer", "H2", 2002, "Black", 15000, "1092AA-6");
+        Car car5 = new Car("Lincoln", "Aviator", 2019, "Dark Blue", 70000, "7521AA-6");
+        Car car6 = new Car("Jeep", "Cherokee", 1980, "Red", 2000, "4367AK-6");
+        Car car7 = new Car("Chevrolet", "Suburban", 1935, "Green", 200, "6732AB-6");
+        Car car8 = new Car("Lincoln", "Mark LT", 2009, "Black", 25000, "9683AM-6");
+        Car car9 = new Car("Jeep", "Wrangler EV", 2020, "Dark Grey", 120000, "0005MI-6");
+        Car car10 = new Car("Hummer", "H3 Alpha", 2007, "Red", 30000, "0005HE-6");
+
+        CarList carList = new CarList();
+        carList.addCar(car1);
+        carList.addCar(car2);
+        carList.addCar(car3);
+        carList.addCar(car4);
+        carList.addCar(car5);
+        carList.addCar(car6);
+        carList.addCar(car7);
+        carList.addCar(car8);
+        carList.addCar(car9);
+        carList.addCar(car10);
+
+        // carList.printAllCarsInList(); // список всех автомобилей
+        carList.printCarListWithGivenBrand("Hummer"); // список автомобилей заданной марки
+        carList.printCarListWithGivenBrandAndYearsOfUse("Jeep", 10); // список автомобилей заданной модели, которые эксплуатируются больше n лет
+        carList.printCarListWithGivenReleaseYearAndBiggerPrice(2007, 15000.00); // список автомобилей заданного года выпуска, цена которых больше указанной
+
+
     }
 }
